@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#FAFAFA" />
+<title>Deputy — Keep your method active between sessions</title>
+<meta name="description" content="Deputy turns your own therapeutic interventions into structured digital protocols that clients can use between sessions — within the method, language, and boundaries you define." />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Deputy — Keep your method active between sessions" />
+<meta property="og:description" content="Your method becomes your Deputy protocol. No coding, no prompt engineering, no technical expertise required." />
+<meta property="og:site_name" content="Deputy" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="icon" href="assets/deputy-mark.svg" type="image/svg+xml" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css" />
+
+<script src="main.js" defer></script>
+<script src="viz.js" defer></script>
+</head>
+<body class="is-loading" data-lang="en">
+
+<!-- ============ SHELL ============ -->
+<header class="shell-top">
+  <a class="brand" href="https://deputy.dk" aria-label="Deputy">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 1696.03 1978.91" fill="none" stroke="currentColor" stroke-width="112" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="73.47 1249.02 73.47 37.5 262.99 37.5"/>
+        <path d="M77.66,1593.47l497.2,2.38c440.18,0,700.73-244.59,700.73-615.26,0-328.77-189.26-594.13-700.73-594.13"/>
+        <path d="M413.29,1249.02l3-1211.52h158.57c564.7,0,1047.7,316.25,1047.7,935.63s-477.43,968.28-1047.7,968.28l-497.2-1.12v-343.92"/>
+      </svg>
+    </span>
+    <span class="brand-text">Deputy</span>
+  </a>
+
+  <nav class="slide-nav" aria-label="Slide progress">
+    <button class="dot" data-go="0" aria-label="Slide 1"></button>
+    <button class="dot" data-go="1" aria-label="Slide 2"></button>
+    <button class="dot" data-go="2" aria-label="Slide 3"></button>
+    <button class="dot" data-go="3" aria-label="Slide 4"></button>
+    <button class="dot" data-go="4" aria-label="Slide 5"></button>
+    <button class="dot" data-go="5" aria-label="Slide 6"></button>
+    <button class="dot" data-go="6" aria-label="Slide 7"></button>
+    <button class="dot" data-go="7" aria-label="Slide 8"></button>
+    <button class="dot" data-go="8" aria-label="Slide 9"></button>
+    <button class="dot" data-go="9" aria-label="Slide 10"></button>
+    <button class="dot" data-go="10" aria-label="Slide 11"></button>
+    <button class="dot" data-go="11" aria-label="Slide 12"></button>
+    <button class="dot" data-go="12" aria-label="Slide 13"></button>
+    <button class="dot" data-go="13" aria-label="Slide 14"></button>
+  </nav>
+
+  <div class="shell-tools">
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button class="lang is-active" data-set-lang="en" role="tab" aria-selected="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang" data-set-lang="da" role="tab" aria-selected="false">DA</button>
+      <span class="lang-sep" aria-hidden="true">·</span>
+      <button class="lang" data-set-lang="de" role="tab" aria-selected="false">DE</button>
+    </div>
+    <button class="open-audience" data-open-audience type="button" title="Open audience view (A)">
+      <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 3 L13 3 L13 13 L3 13 Z M3 3 L7 7 M13 3 L9 7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Audience</span>
+    </button>
+    <button class="notes-toggle" data-toggle-notes type="button" aria-pressed="false" title="Toggle notes (N)">Notes</button>
+    <span class="sync-indicator" data-sync-status hidden aria-live="polite"><span class="sync-dot"></span>Synced</span>
+  </div>
+</header>
+
+<aside class="counter" aria-hidden="true">
+  <span class="ctr-num">01</span><span class="ctr-sep"></span><span class="ctr-tot">14</span>
+</aside>
+<aside class="hint" aria-hidden="true">scroll · arrows · L language</aside>
+
+<!-- ============ DECK ============
+     Sequence (post Iteration 3a + 4 revision):
+     Hero · Your method · 167 hours · The broader gap · Between sessions ·
+     The difference · What you gain · One protocol, many situations ·
+     From method to protocol · No technical expertise · Your library ·
+     Finally (AI, controlled) · One sentence · Next step
+     Tone: calmer, clinical, collegial. The offer sits directly after the hero.
+     The chatbot contrast appears later and is framed as differentiation, not alarm.
+     The AI capability is revealed last, after every other benefit has landed,
+     and stated as controlled — the professional keeps control throughout.
+============================================= -->
+<main id="deck" class="deck">
+
+  <!-- ===== 1 · HERO ===== -->
+  <section class="slide" data-slide="0" data-label="Hero"
+           style="background: linear-gradient(180deg,var(--c-bg-2),var(--c-bg));">
+    <div class="hero-aura" aria-hidden="true"></div>
+    <div class="hero-wrap">
+      <h1 class="hero-title reveal reveal-d1">
+        <span data-lang="en">Keep your professional method active between sessions.</span>
+        <span data-lang="da">Hold din faglige metode aktiv mellem samtalerne.</span>
+        <span data-lang="de">Halten Sie Ihre fachliche Methode zwischen den Sitzungen aktiv.</span>
+      </h1>
+      <p class="hero-lede reveal reveal-d2">
+        <span data-lang="en">Deputy turns your own therapeutic interventions into structured digital protocols that clients can use between sessions — within the method, language, and boundaries you define.</span>
+        <span data-lang="da">Deputy forvandler dine egne terapeutiske interventioner til strukturerede digitale protokoller, som klienter kan bruge mellem samtalerne — inden for den metode, det sprog og de rammer, du definerer.</span>
+        <span data-lang="de">Deputy überführt Ihre eigenen therapeutischen Interventionen in strukturierte digitale Protokolle, die Klienten zwischen den Sitzungen nutzen können — innerhalb der Methode, der Sprache und der Grenzen, die Sie definieren.</span>
+      </p>
+      <p class="hero-quiet reveal reveal-d3">
+        <span data-lang="en">No coding. No prompt engineering. No technical expertise required.</span>
+        <span data-lang="da">Ingen kodning. Ingen prompt engineering. Ingen AI-viden nødvendig.</span>
+        <span data-lang="de">Kein Programmieren. Kein Prompt Engineering. Keine KI-Kenntnisse nötig.</span>
+      </p>
+      <a class="hero-cta reveal reveal-d4" href="#next-step">
+        <span data-lang="en">Bring one method you already use</span>
+        <span data-lang="da">Tag én metode, du allerede bruger</span>
+        <span data-lang="de">Bringen Sie eine Methode mit, die Sie bereits nutzen</span>
+        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Open on the benefit. No wordmark, no contrast, no warning — the first impression is that Deputy begins with what they already do.</p></aside>
+  </section>
+
+  <!-- ===== 2 · YOUR METHOD BECOMES YOUR DEPUTY PROTOCOL ===== -->
+  <section class="slide" data-slide="1" data-label="Your method"
+           style="background: radial-gradient(56% 48% at 78% 30%, rgba(107,155,148,.07), transparent 62%), var(--c-bg);">
+    <div class="split-wrap narrow">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">Your method</span>
+        <span data-lang="da">Din metode</span>
+        <span data-lang="de">Ihre Methode</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en">Your method becomes <span class="accent">your Deputy protocol.</span></span>
+        <span data-lang="da">Din metode bliver <span class="accent">din Deputy-protokol.</span></span>
+        <span data-lang="de">Ihre Methode wird <span class="accent">Ihr Deputy-Protokoll.</span></span>
+      </h2>
+      <p class="lede reveal reveal-d3">
+        <span data-lang="en">You already own the valuable part: your method. Deputy gives it structure, continuity, and reach.</span>
+        <span data-lang="da">Du ejer allerede det værdifulde: din metode. Deputy giver den struktur, kontinuitet og rækkevidde.</span>
+        <span data-lang="de">Das Wertvolle besitzen Sie bereits: Ihre Methode. Deputy gibt ihr Struktur, Kontinuität und Reichweite.</span>
+      </p>
+      <p class="body wide reveal reveal-d4" style="margin-top:16px;">
+        <span data-lang="en">It turns an intervention you already use into a clear protocol your clients can return to between sessions.</span>
+        <span data-lang="da">Den forvandler en intervention, du allerede bruger, til en klar protokol, som dine klienter kan vende tilbage til mellem samtalerne.</span>
+        <span data-lang="de">Es macht aus einer Intervention, die Sie bereits nutzen, ein klares Protokoll, zu dem Ihre Klienten zwischen den Sitzungen zurückkehren können.</span>
+      </p>
+      <ul class="points reveal reveal-d5">
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">Your professional language remains recognisably yours.</span>
+          <span data-lang="da">Dit faglige sprog forbliver genkendeligt dit.</span>
+          <span data-lang="de">Ihre fachliche Sprache bleibt erkennbar Ihre.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">Your clinical logic stays intact.</span>
+          <span data-lang="da">Din kliniske logik forbliver intakt.</span>
+          <span data-lang="de">Ihre klinische Logik bleibt intakt.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">Your boundaries define how the protocol is used.</span>
+          <span data-lang="da">Dine rammer bestemmer, hvordan protokollen bruges.</span>
+          <span data-lang="de">Ihre Grenzen bestimmen, wie das Protokoll eingesetzt wird.</span>
+        </span></li>
+      </ul>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>The positive core, now directly after the hero. Deputy does not begin with AI; it begins with what they already do.</p></aside>
+  </section>
+
+  <!-- ===== 3 · ONE HOUR WITH YOU — bespoke 168-hour visual ===== -->
+  <section class="slide" data-slide="2" data-label="The problem"
+           style="background: radial-gradient(58% 46% at 42% 62%, rgba(107,155,148,.055), transparent 62%), var(--c-bg);">
+    <div class="week-wrap">
+      <div class="week-head">
+        <h2 class="display reveal reveal-d1">
+          <span data-lang="en"><span class="line">One hour with you.</span><span class="line accent">167 without.</span></span>
+          <span data-lang="da"><span class="line">Én time med dig.</span><span class="line accent">167 uden.</span></span>
+          <span data-lang="de"><span class="line">Eine Stunde mit Ihnen.</span><span class="line accent">167 ohne.</span></span>
+        </h2>
+        <div class="week-copy reveal reveal-d2">
+          <p class="body">
+            <span data-lang="en">Much of therapeutic change has to continue outside the session. Clients return to everyday life, to familiar triggers, avoidance patterns, and emotional momentum. What was clear in the session can become difficult to access during the week.</span>
+            <span data-lang="da">Meget af den terapeutiske forandring skal fortsætte uden for samtalen. Klienterne vender tilbage til hverdagen, til velkendte triggere, undgåelsesmønstre og følelsesmæssig bevægelse. Det, der stod klart i samtalen, kan blive svært at få fat i i løbet af ugen.</span>
+            <span data-lang="de">Ein großer Teil therapeutischer Veränderung muss außerhalb der Sitzung weitergehen. Klienten kehren in den Alltag zurück, zu vertrauten Triggern, Vermeidungsmustern und emotionaler Eigendynamik. Was in der Sitzung klar war, kann in der Woche schwer zugänglich werden.</span>
+          </p>
+          <p class="week-note">
+            <span data-lang="en">Deputy helps keep the agreed therapeutic structure available between contacts.</span>
+            <span data-lang="da">Deputy hjælper med at holde den aftalte terapeutiske struktur tilgængelig mellem kontakterne.</span>
+            <span data-lang="de">Deputy hilft, die vereinbarte therapeutische Struktur zwischen den Kontakten verfügbar zu halten.</span>
+          </p>
+        </div>
+      </div>
+
+      <figure class="week-figure reveal reveal-d3" data-viz="week"></figure>
+
+      <p class="week-legend reveal reveal-d4">
+        <span class="lg"><span class="lg-swatch on" aria-hidden="true"></span>
+          <span data-lang="en"><b>1 hour</b> with you</span>
+          <span data-lang="da"><b>1 time</b> med dig</span>
+          <span data-lang="de"><b>1 Stunde</b> mit Ihnen</span>
+        </span>
+        <span class="lg"><span class="lg-swatch off" aria-hidden="true"></span>
+          <span data-lang="en"><b>167 hours</b> without</span>
+          <span data-lang="da"><b>167 timer</b> uden</span>
+          <span data-lang="de"><b>167 Stunden</b> ohne</span>
+        </span>
+        <span class="lg">
+          <span data-lang="en">One week · 168 hours</span>
+          <span data-lang="da">Én uge · 168 timer</span>
+          <span data-lang="de">Eine Woche · 168 Stunden</span>
+        </span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>The 167-hour logic stays. The copy now frames it as clinical continuity, not crisis.</p></aside>
+  </section>
+
+  <!-- ===== 3b · THE BROADER GAP ===== -->
+  <section class="slide" data-slide="3" data-label="The broader gap"
+           style="background: radial-gradient(58% 48% at 20% 30%, rgba(107,155,148,.075), transparent 62%), var(--c-bg);">
+    <div class="split-wrap narrow">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">The broader gap</span>
+        <span data-lang="da">Det bredere behov</span>
+        <span data-lang="de">Die größere Lücke</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en"><span class="line">Clinical expertise is scarce.</span><span class="line accent">Need is not.</span></span>
+        <span data-lang="da"><span class="line">Klinisk ekspertise er en mangelvare.</span><span class="line accent">Behovet er det ikke.</span></span>
+        <span data-lang="de"><span class="line">Klinische Fachkompetenz ist knapp.</span><span class="line accent">Der Bedarf ist es nicht.</span></span>
+      </h2>
+      <p class="lede reveal reveal-d3">
+        <span data-lang="en">The target group for Deputy has grown. It's no longer only about continuity for clients who already see a psychologist regularly.</span>
+        <span data-lang="da">Målgruppen for Deputy er vokset. Det handler ikke længere kun om kontinuitet for klienter, der allerede ser en psykolog regelmæssigt.</span>
+        <span data-lang="de">Die Zielgruppe von Deputy ist gewachsen. Es geht nicht mehr nur um Kontinuität für Klienten, die bereits regelmäßig einen Psychologen sehen.</span>
+      </p>
+      <p class="body wide reveal reveal-d4" style="margin-top:16px;">
+        <span data-lang="en">In crisis- and conflict-affected regions — Ukraine among them — the more urgent problem is often that psychological treatment itself is hard to reach: long waiting lists, limited capacity, one psychologist supporting far more people than a single practice allows.</span>
+        <span data-lang="da">I kriseramte og konfliktprægede regioner — heriblandt Ukraine — er det mere presserende problem ofte, at psykologisk behandling i sig selv er svær at få adgang til: lange ventelister, begrænset kapacitet, én psykolog der skal støtte langt flere mennesker, end en enkelt praksis tillader.</span>
+        <span data-lang="de">In krisen- und konfliktbetroffenen Regionen — darunter die Ukraine — besteht das dringendere Problem oft darin, dass psychologische Behandlung selbst schwer zugänglich ist: lange Wartelisten, begrenzte Kapazität, ein Psychologe, der weit mehr Menschen unterstützen muss, als eine einzelne Praxis erlaubt.</span>
+      </p>
+      <p class="lede reveal reveal-d5" style="margin-top:20px;">
+        <span data-lang="en">Deputy helps professional methods reach further — <span class="accent-text">between sessions, while people wait for care, and wherever professional capacity is limited.</span></span>
+        <span data-lang="da">Deputy hjælper faglige metoder med at nå længere — <span class="accent-text">mellem samtalerne, mens folk venter på hjælp, og hvor faglig kapacitet er begrænset.</span></span>
+        <span data-lang="de">Deputy hilft fachlichen Methoden, weiter zu reichen — <span class="accent-text">zwischen den Sitzungen, während Menschen auf Hilfe warten, und überall dort, wo die fachliche Kapazität begrenzt ist.</span></span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Iteration 3a: the target group has widened beyond continuity-only. The 167-hour logic becomes one part of a broader access/capacity problem. Framing: "Clinical expertise is scarce. Need is not."</p></aside>
+  </section>
+
+  <!-- ===== 4 · THE BETWEEN-SESSION SPACE ===== -->
+  <section class="slide" data-slide="4" data-label="Between sessions"
+           style="background: radial-gradient(62% 52% at 50% 106%, rgba(107,155,148,.06), transparent 62%), var(--c-bg);">
+    <div class="statement-wrap">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">Between sessions</span>
+        <span data-lang="da">Mellem samtalerne</span>
+        <span data-lang="de">Zwischen den Sitzungen</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en">The between-session space already matters clinically.</span>
+        <span data-lang="da">Rummet mellem samtalerne har allerede klinisk betydning.</span>
+        <span data-lang="de">Der Raum zwischen den Sitzungen ist klinisch bereits relevant.</span>
+      </h2>
+      <p class="answer reveal reveal-d3">
+        <span data-lang="en">Many clients already use digital tools, notes, apps, or general-purpose AI systems between sessions.</span>
+        <span data-lang="da">Mange klienter bruger allerede digitale værktøjer, noter, apps eller almene AI-systemer mellem samtalerne.</span>
+        <span data-lang="de">Viele Klienten nutzen zwischen den Sitzungen bereits digitale Werkzeuge, Notizen, Apps oder allgemeine KI-Systeme.</span>
+      </p>
+      <p class="answer reveal reveal-d4" style="margin-top:14px;">
+        <span data-lang="en">Deputy offers a therapist-led way to structure this space — <em>based on your method, your protocol, and your professional boundaries.</em></span>
+        <span data-lang="da">Deputy tilbyder en terapeutledet måde at strukturere dette rum på — <em>baseret på din metode, din protokol og dine faglige rammer.</em></span>
+        <span data-lang="de">Deputy bietet einen therapeutengeführten Weg, diesen Raum zu strukturieren — <em>auf Basis Ihrer Methode, Ihres Protokolls und Ihrer fachlichen Grenzen.</em></span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Observational, not a warning. The space is already in use; Deputy is the therapist-led way to structure it.</p></aside>
+  </section>
+
+  <!-- ===== 5 · GENERAL-PURPOSE TOOLS vs YOUR DEPUTY PROTOCOL ===== -->
+  <section class="slide" data-slide="5" data-label="The difference"
+           style="background: linear-gradient(180deg,var(--c-bg-2),var(--c-bg));">
+    <div class="split-wrap">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">The difference</span>
+        <span data-lang="da">Forskellen</span>
+        <span data-lang="de">Der Unterschied</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en">The difference is structure.</span>
+        <span data-lang="da">Forskellen er struktur.</span>
+        <span data-lang="de">Der Unterschied ist Struktur.</span>
+      </h2>
+      <div class="split-grid left-heavy" style="margin-top:26px;">
+        <article class="pane accent-edge reveal reveal-d3">
+          <header class="pane-head">
+            <span class="pane-tag">
+              <span data-lang="en">Your Deputy protocol</span>
+              <span data-lang="da">Din Deputy-protokol</span>
+              <span data-lang="de">Ihr Deputy-Protokoll</span>
+            </span>
+          </header>
+          <h3 class="pane-title">
+            <span data-lang="en">Structured, therapist-led, and yours.</span>
+            <span data-lang="da">Struktureret, terapeutledet og din.</span>
+            <span data-lang="de">Strukturiert, therapeutengeführt und Ihres.</span>
+          </h3>
+          <p class="body">
+            <span data-lang="en">Deputy gives clients a clear, guided way to return to the work you've introduced — your language, your sequence, your boundaries — while you remain the professional reference point throughout.</span>
+            <span data-lang="da">Deputy giver klienterne en klar, guidet vej tilbage til det arbejde, du har introduceret — dit sprog, din rækkefølge, dine rammer — mens du hele vejen igennem forbliver det faglige omdrejningspunkt.</span>
+            <span data-lang="de">Deputy gibt Klienten einen klaren, geführten Weg zurück zu der Arbeit, die Sie eingeführt haben — Ihre Sprache, Ihre Abfolge, Ihre Grenzen — während Sie durchgehend der fachliche Bezugspunkt bleiben.</span>
+          </p>
+        </article>
+        <article class="pane is-dim reveal reveal-d4">
+          <header class="pane-head">
+            <span class="pane-tag muted">
+              <span data-lang="en">General-purpose AI chatbots</span>
+              <span data-lang="da">Almene AI-chatbots</span>
+              <span data-lang="de">Allgemeine KI-Chatbots</span>
+            </span>
+          </header>
+          <h3 class="pane-title">
+            <span data-lang="en">Filling the gap, without structure.</span>
+            <span data-lang="da">Udfylder hullet — uden struktur.</span>
+            <span data-lang="de">Füllt die Lücke — ohne Struktur.</span>
+          </h3>
+          <p class="body">
+            <span data-lang="en">Many people already turn to general-purpose chatbots — between sessions, and even more so where professional care is hard to reach at all. They carry none of your method, sequence, or boundaries: a real challenge in already under-resourced settings.</span>
+            <span data-lang="da">Mange mennesker bruger allerede almene chatbots — mellem samtalerne, og endnu mere hvor faglig hjælp slet ikke er let tilgængelig. De bærer hverken din metode, din rækkefølge eller dine rammer: en reel udfordring i miljøer, der allerede er underforsynede.</span>
+            <span data-lang="de">Viele Menschen greifen bereits auf allgemeine Chatbots zurück — zwischen den Sitzungen, und noch mehr dort, wo fachliche Hilfe ohnehin schwer erreichbar ist. Sie tragen weder Ihre Methode noch Ihre Abfolge noch Ihre Grenzen: eine echte Herausforderung in Umgebungen, die bereits unterversorgt sind.</span>
+          </p>
+        </article>
+      </div>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Differentiation, not alarm. The point is structure, method, and accountability.</p></aside>
+  </section>
+
+  <!-- ===== 6 · WHAT YOU GAIN ===== -->
+  <section class="slide" data-slide="6" data-label="What you gain"
+           style="background: radial-gradient(56% 48% at 82% 26%, rgba(107,155,148,.07), transparent 62%), var(--c-bg);">
+    <div class="split-wrap">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">In practice</span>
+        <span data-lang="da">I praksis</span>
+        <span data-lang="de">In der Praxis</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en">What you gain.</span>
+        <span data-lang="da">Hvad du får.</span>
+        <span data-lang="de">Was Sie gewinnen.</span>
+      </h2>
+      <div class="cards cols-4">
+        <article class="card reveal reveal-d3">
+          <span class="card-key"><span data-lang="en">Continuity</span><span data-lang="da">Kontinuitet</span><span data-lang="de">Kontinuität</span></span>
+          <p>
+            <span data-lang="en">Your therapeutic approach remains available in a structured form between personal contacts.</span>
+            <span data-lang="da">Din terapeutiske tilgang forbliver tilgængelig i struktureret form mellem de personlige kontakter.</span>
+            <span data-lang="de">Ihr therapeutischer Ansatz bleibt in strukturierter Form zwischen den persönlichen Kontakten verfügbar.</span>
+          </p>
+        </article>
+        <article class="card reveal reveal-d4">
+          <span class="card-key"><span data-lang="en">Consistency</span><span data-lang="da">Konsistens</span><span data-lang="de">Konsistenz</span></span>
+          <p>
+            <span data-lang="en">Clients return to the agreed steps as you designed them — not only as they remember them.</span>
+            <span data-lang="da">Klienterne vender tilbage til de aftalte trin, som du har designet dem — ikke kun som de husker dem.</span>
+            <span data-lang="de">Klienten kehren zu den vereinbarten Schritten zurück, wie Sie sie entworfen haben — nicht nur, wie sie sie erinnern.</span>
+          </p>
+        </article>
+        <article class="card reveal reveal-d5">
+          <span class="card-key"><span data-lang="en">Ownership</span><span data-lang="da">Ejerskab</span><span data-lang="de">Eigentum</span></span>
+          <p>
+            <span data-lang="en">The protocol is based on your method, your language, and your clinical reasoning.</span>
+            <span data-lang="da">Protokollen bygger på din metode, dit sprog og din kliniske tænkning.</span>
+            <span data-lang="de">Das Protokoll beruht auf Ihrer Methode, Ihrer Sprache und Ihrer klinischen Argumentation.</span>
+          </p>
+        </article>
+        <article class="card reveal reveal-d6">
+          <span class="card-key"><span data-lang="en">Reach</span><span data-lang="da">Rækkevidde</span><span data-lang="de">Reichweite</span></span>
+          <p>
+            <span data-lang="en">Your work becomes available to more people than your personal presence alone could reach.</span>
+            <span data-lang="da">Dit arbejde bliver tilgængeligt for flere mennesker, end din personlige tilstedeværelse alene kunne nå.</span>
+            <span data-lang="de">Ihre Arbeit wird für mehr Menschen verfügbar, als Ihre persönliche Anwesenheit allein erreichen könnte.</span>
+          </p>
+        </article>
+      </div>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>All four terms kept. Calmer rhythm; each benefit immediately practical.</p></aside>
+  </section>
+
+  <!-- ===== 6b · ONE PROTOCOL, MANY SITUATIONS ===== -->
+  <section class="slide" data-slide="7" data-label="One protocol, many situations"
+           style="background: linear-gradient(180deg,var(--c-bg-2),var(--c-bg));">
+    <div class="split-wrap narrow">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">What it supports</span>
+        <span data-lang="da">Hvad den understøtter</span>
+        <span data-lang="de">Was es unterstützt</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en">One protocol, many situations.</span>
+        <span data-lang="da">Én protokol, mange situationer.</span>
+        <span data-lang="de">Ein Protokoll, viele Situationen.</span>
+      </h2>
+      <p class="lede reveal reveal-d3">
+        <span data-lang="en">Once your method becomes a protocol, it can do more than hold the space between two sessions.</span>
+        <span data-lang="da">Når din metode bliver til en protokol, kan den mere end blot udfylde rummet mellem to samtaler.</span>
+        <span data-lang="de">Sobald Ihre Methode zu einem Protokoll wird, kann sie mehr, als nur den Raum zwischen zwei Sitzungen zu halten.</span>
+      </p>
+      <ul class="points reveal reveal-d4">
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">It stays yours — your language, your sequence, your clinical logic.</span>
+          <span data-lang="da">Den forbliver din — dit sprog, din rækkefølge, din kliniske logik.</span>
+          <span data-lang="de">Es bleibt Ihres — Ihre Sprache, Ihre Abfolge, Ihre klinische Logik.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">It can support continuity, or extend your reach beyond what one practice allows.</span>
+          <span data-lang="da">Den kan understøtte kontinuitet eller udvide din rækkevidde ud over, hvad én praksis tillader.</span>
+          <span data-lang="de">Es kann Kontinuität unterstützen oder Ihre Reichweite über das hinaus erweitern, was eine einzelne Praxis erlaubt.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">It can be combined with selected protocols from the Deputy Library.</span>
+          <span data-lang="da">Den kan kombineres med udvalgte protokoller fra Deputy Library.</span>
+          <span data-lang="de">Es kann mit ausgewählten Protokollen aus der Deputy Library kombiniert werden.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">It can be used between sessions, or in settings where professional capacity is limited.</span>
+          <span data-lang="da">Den kan bruges mellem samtalerne eller i miljøer, hvor faglig kapacitet er begrænset.</span>
+          <span data-lang="de">Es kann zwischen den Sitzungen genutzt werden oder in Umgebungen, in denen die fachliche Kapazität begrenzt ist.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">It can support immediate and ongoing debriefing for health professionals.</span>
+          <span data-lang="da">Den kan understøtte umiddelbar og løbende debriefing for sundhedsfagligt personale.</span>
+          <span data-lang="de">Es kann unmittelbares und fortlaufendes Debriefing für Gesundheitsfachkräfte unterstützen.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">It can work as an ongoing intervention — supporting people through a situation as it unfolds, not only after it has ended.</span>
+          <span data-lang="da">Den kan fungere som en løbende intervention — og støtte mennesker gennem en situation, mens den udspiller sig, ikke kun efter den er slut.</span>
+          <span data-lang="de">Es kann als fortlaufende Intervention wirken — und Menschen durch eine Situation begleiten, während sie sich entfaltet, nicht erst danach.</span>
+        </span></li>
+      </ul>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Iteration 4 build-up: establish everything the protocol can do — before the AI is mentioned at all.</p></aside>
+  </section>
+
+  <!-- ===== 7 · FROM METHOD TO PROTOCOL ===== -->
+  <section class="slide" data-slide="8" data-label="From method to protocol"
+           style="background: linear-gradient(180deg,var(--c-bg-2),var(--c-bg));">
+    <div class="split-wrap">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">From method to protocol</span>
+        <span data-lang="da">Fra metode til protokol</span>
+        <span data-lang="de">Von der Methode zum Protokoll</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en">Four steps. You are involved in all of them.</span>
+        <span data-lang="da">Fire trin. Du er involveret i dem alle.</span>
+        <span data-lang="de">Vier Schritte. Sie sind in alle eingebunden.</span>
+      </h2>
+      <ol class="timeline cols-4">
+        <li class="t-step reveal reveal-d3">
+          <span class="t-year"><span data-lang="en">01 · Talk</span><span data-lang="da">01 · Samtale</span><span data-lang="de">01 · Gespräch</span></span>
+          <p>
+            <span data-lang="en">Bring one intervention or structured way of working that you already use.</span>
+            <span data-lang="da">Tag én intervention eller en struktureret arbejdsmåde, du allerede bruger.</span>
+            <span data-lang="de">Bringen Sie eine Intervention oder strukturierte Arbeitsweise mit, die Sie bereits nutzen.</span>
+          </p>
+        </li>
+        <li class="t-step reveal reveal-d4">
+          <span class="t-year"><span data-lang="en">02 · Map</span><span data-lang="da">02 · Kortlægning</span><span data-lang="de">02 · Struktur</span></span>
+          <p>
+            <span data-lang="en">Together, we translate the method into a clear protocol structure.</span>
+            <span data-lang="da">Sammen oversætter vi metoden til en klar protokolstruktur.</span>
+            <span data-lang="de">Gemeinsam überführen wir die Methode in eine klare Protokollstruktur.</span>
+          </p>
+          <p class="t-note">
+            <span data-lang="en">Nothing is digitised before it is understood.</span>
+            <span data-lang="da">Intet digitaliseres, før det er forstået.</span>
+            <span data-lang="de">Nichts wird digitalisiert, bevor es verstanden ist.</span>
+          </p>
+        </li>
+        <li class="t-step reveal reveal-d5">
+          <span class="t-year"><span data-lang="en">03 · Build</span><span data-lang="da">03 · Bygning</span><span data-lang="de">03 · Umsetzung</span></span>
+          <p>
+            <span data-lang="en">The approved structure becomes a working Deputy protocol.</span>
+            <span data-lang="da">Den godkendte struktur bliver til en fungerende Deputy-protokol.</span>
+            <span data-lang="de">Die freigegebene Struktur wird zu einem funktionierenden Deputy-Protokoll.</span>
+          </p>
+          <p class="t-note">
+            <span data-lang="en">Technology adapts to the method, not the other way round.</span>
+            <span data-lang="da">Teknologien tilpasser sig metoden — ikke omvendt.</span>
+            <span data-lang="de">Die Technik passt sich der Methode an, nicht umgekehrt.</span>
+          </p>
+        </li>
+        <li class="t-step reveal reveal-d6">
+          <span class="t-year"><span data-lang="en">04 · Review &amp; test</span><span data-lang="da">04 · Gennemgang &amp; test</span><span data-lang="de">04 · Prüfung &amp; Test</span></span>
+          <p>
+            <span data-lang="en">You review, adjust, and decide how the protocol should be used.</span>
+            <span data-lang="da">Du gennemgår, justerer og beslutter, hvordan protokollen skal bruges.</span>
+            <span data-lang="de">Sie prüfen, passen an und entscheiden, wie das Protokoll eingesetzt wird.</span>
+          </p>
+          <p class="t-note">
+            <span data-lang="en">You remain the author and the professional reference point.</span>
+            <span data-lang="da">Du forbliver forfatteren og det faglige omdrejningspunkt.</span>
+            <span data-lang="de">Sie bleiben Autor und fachlicher Bezugspunkt.</span>
+          </p>
+        </li>
+      </ol>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Four steps kept. The psychologist is visible as author, reviewer, and final decision-maker throughout.</p></aside>
+  </section>
+
+  <!-- ===== 8 · NO AI EXPERTISE REQUIRED ===== -->
+  <section class="slide" data-slide="9" data-label="No technical expertise"
+           style="background: radial-gradient(60% 50% at 50% 40%, rgba(107,155,148,.06), transparent 62%), var(--c-bg);">
+    <div class="statement-wrap">
+      <h2 class="display small reveal reveal-d1">
+        <span data-lang="en">No technical expertise required.</span>
+        <span data-lang="da">Ingen teknisk viden nødvendig.</span>
+        <span data-lang="de">Keine technischen Kenntnisse nötig.</span>
+      </h2>
+      <ul class="points center reveal reveal-d2">
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">You do not need to code.</span>
+          <span data-lang="da">Du behøver ikke kode.</span>
+          <span data-lang="de">Sie müssen nicht programmieren.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">You do not need to write prompts.</span>
+          <span data-lang="da">Du behøver ikke skrive prompts.</span>
+          <span data-lang="de">Sie müssen keine Prompts schreiben.</span>
+        </span></li>
+        <li><span class="pt-mark" aria-hidden="true"></span><span>
+          <span data-lang="en">You do not need to redesign your method.</span>
+          <span data-lang="da">Du behøver ikke omlægge din metode.</span>
+          <span data-lang="de">Sie müssen Ihre Methode nicht umstellen.</span>
+        </span></li>
+      </ul>
+      <p class="answer reveal reveal-d3" style="margin-top:26px;">
+        <span data-lang="en"><em>Deputy is adapted to the way you already work.</em></span>
+        <span data-lang="da"><em>Deputy tilpasses den måde, du allerede arbejder på.</em></span>
+        <span data-lang="de"><em>Deputy wird an die Art angepasst, wie Sie bereits arbeiten.</em></span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>A relief, not a slogan. Quiet typography; no chips, no uppercase strip.</p></aside>
+  </section>
+
+  <!-- ===== 9 · BUILD YOUR OWN — AND ADD FROM THE LIBRARY ===== -->
+  <section class="slide" data-slide="10" data-label="Your library"
+           style="background: radial-gradient(58% 48% at 72% 74%, rgba(110,95,146,.075), transparent 62%), var(--c-bg);">
+    <div class="split-wrap">
+      <span class="kicker reveal reveal-d1" style="margin-bottom:14px;">
+        <span data-lang="en">Your library</span>
+        <span data-lang="da">Dit bibliotek</span>
+        <span data-lang="de">Ihre Bibliothek</span>
+      </span>
+      <h2 class="display small reveal reveal-d2" style="margin-bottom:14px;">
+        <span data-lang="en">Build your own — and add from the library.</span>
+        <span data-lang="da">Byg din egen — og tilføj fra biblioteket.</span>
+        <span data-lang="de">Bauen Sie Ihr eigenes — und ergänzen Sie aus der Bibliothek.</span>
+      </h2>
+      <p class="lede reveal reveal-d3" style="margin-top:0;">
+        <span data-lang="en">A Deputy protocol starts with your method — but it doesn't have to stop there. It's not either/or: create your own protocol, and, if it's useful, add selected protocols from the library alongside it.</span>
+        <span data-lang="da">En Deputy-protokol starter med din metode — men behøver ikke stoppe der. Det er ikke enten-eller: skab din egen protokol, og tilføj, hvis det er nyttigt, udvalgte protokoller fra biblioteket ved siden af.</span>
+        <span data-lang="de">Ein Deputy-Protokoll beginnt mit Ihrer Methode — muss aber nicht dort enden. Es ist kein Entweder-oder: Erstellen Sie Ihr eigenes Protokoll, und ergänzen Sie es bei Bedarf um ausgewählte Protokolle aus der Bibliothek.</span>
+      </p>
+      <ul class="bul has-desc compact" style="margin-top:14px;">
+        <li class="is-own reveal reveal-d4">
+          <span class="bul-mark" aria-hidden="true"></span>
+          <span>
+            <span data-lang="en">Your own protocol</span>
+            <span data-lang="da">Din egen protokol</span>
+            <span data-lang="de">Ihr eigenes Protokoll</span>
+          </span>
+          <span class="bul-desc">
+            <span data-lang="en">The core offering: your method translated into a Deputy protocol.</span>
+            <span data-lang="da">Kernetilbuddet: din metode oversat til en Deputy-protokol.</span>
+            <span data-lang="de">Das Kernangebot: Ihre Methode, übersetzt in ein Deputy-Protokoll.</span>
+          </span>
+        </li>
+        <li class="reveal reveal-d5">
+          <span class="bul-mark" aria-hidden="true"></span>
+          <span>Decompression</span>
+          <span class="bul-desc">
+            <span data-lang="en">A structured protocol for down-regulation and stabilisation — including regular debriefing for health professionals in high-load environments.</span>
+            <span data-lang="da">En struktureret protokol til nedregulering og stabilisering — herunder løbende debriefing for sundhedsfagligt personale i miljøer med høj belastning.</span>
+            <span data-lang="de">Ein strukturiertes Protokoll zur Herunterregulierung und Stabilisierung — einschließlich regelmäßigem Debriefing für Gesundheitsfachkräfte in stark belasteten Umgebungen.</span>
+          </span>
+        </li>
+        <li class="reveal reveal-d6">
+          <span class="bul-mark" aria-hidden="true"></span>
+          <span>Decluttering</span>
+          <span class="bul-desc">
+            <span data-lang="en">A structured protocol for working with stress-loaded images, reactions, or inner material.</span>
+            <span data-lang="da">En struktureret protokol til arbejde med stressbelastede billeder, reaktioner eller indre materiale.</span>
+            <span data-lang="de">Ein strukturiertes Protokoll für die Arbeit mit stressbelasteten Bildern, Reaktionen oder innerem Material.</span>
+          </span>
+        </li>
+      </ul>
+      <p class="lede reveal reveal-d6" style="margin-top:8px;">
+        <span data-lang="en">The value isn't a new intervention. <span class="accent-text">It's the ability to scale what already works.</span></span>
+        <span data-lang="da">Værdien er ikke en ny intervention. <span class="accent-text">Det er evnen til at skalere det, der allerede virker.</span></span>
+        <span data-lang="de">Der Wert liegt nicht in einer neuen Intervention. <span class="accent-text">Er liegt in der Fähigkeit, das zu skalieren, was bereits funktioniert.</span></span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Iteration 3a: architecture clarified — own protocol plus library, incl. debriefing protocols for health professionals in high-load environments. Own protocol now leads.</p></aside>
+  </section>
+
+  <!-- ===== 10 · ONE SENTENCE ===== -->
+  <section class="slide" data-slide="11" data-label="Finally"
+           style="background: radial-gradient(56% 48% at 24% 34%, rgba(107,155,148,.075), transparent 62%), var(--c-bg);">
+    <div class="split-wrap narrow">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">Finally</span>
+        <span data-lang="da">Afslutningsvis</span>
+        <span data-lang="de">Abschließend</span>
+      </span>
+      <h2 class="display small reveal reveal-d2">
+        <span data-lang="en"><span class="line">The protocol responds —</span><span class="line accent">under your control.</span></span>
+        <span data-lang="da"><span class="line">Protokollen reagerer —</span><span class="line accent">under din kontrol.</span></span>
+        <span data-lang="de"><span class="line">Das Protokoll reagiert —</span><span class="line accent">unter Ihrer Kontrolle.</span></span>
+      </h2>
+      <p class="lede reveal reveal-d3">
+        <span data-lang="en">Deputy protocols are interactive — controlled interactive. The treating psychologist, or more broadly the mental health professional using Deputy, keeps control over structure, sequence, and professional boundaries at every step.</span>
+        <span data-lang="da">Deputy-protokoller er interaktive — kontrolleret interaktive. Den behandlende psykolog, eller mere bredt den sundhedsfaglige person, der bruger Deputy, bevarer kontrollen over struktur, rækkefølge og faglige rammer ved hvert trin.</span>
+        <span data-lang="de">Deputy-Protokolle sind interaktiv — kontrolliert interaktiv. Der behandelnde Psychologe, oder allgemeiner die Fachkraft für psychische Gesundheit, die Deputy nutzt, behält bei jedem Schritt die Kontrolle über Struktur, Abfolge und fachliche Grenzen.</span>
+      </p>
+      <p class="body wide reveal reveal-d4" style="margin-top:16px;">
+        <span data-lang="en">Selected, controlled AI components let the protocol respond to the person working through it, always inside the boundaries that professional has already set.</span>
+        <span data-lang="da">Udvalgte, kontrollerede AI-komponenter gør det muligt for protokollen at reagere på den person, der arbejder sig igennem den — altid inden for de rammer, den fagperson allerede har fastsat.</span>
+        <span data-lang="de">Ausgewählte, kontrollierte KI-Komponenten lassen das Protokoll auf die Person reagieren, die es durchläuft — stets innerhalb der Grenzen, die diese Fachkraft bereits festgelegt hat.</span>
+      </p>
+      <p class="answer reveal reveal-d5" style="margin-top:22px;">
+        <span data-lang="en">The AI doesn't define the therapy. <em>It's what makes the protocol responsive.</em></span>
+        <span data-lang="da">AI'en definerer ikke terapien. <em>Den er det, der gør protokollen responsiv.</em></span>
+        <span data-lang="de">Die KI definiert nicht die Therapie. <em>Sie ist es, die das Protokoll responsiv macht.</em></span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>Iteration 4, the "Steve Jobs moment" — but reframed: not a hard reveal, a quiet closing insight. Comes only after every non-AI benefit has landed. Control stays explicitly with the professional; the audience is widened to "mental health professional" given the Ukraine context.</p></aside>
+  </section>
+
+  <!-- ===== 11 · ONE SENTENCE ===== -->
+  <section class="slide" data-slide="12" data-label="In one sentence"
+           style="background: radial-gradient(60% 50% at 50% 34%, rgba(107,155,148,.10), transparent 62%), linear-gradient(180deg,var(--c-bg-2),var(--c-bg));">
+    <div class="pq-wrap">
+      <p class="pq reveal reveal-d2">
+        <span data-lang="en">Your method stays yours. <em>Deputy makes it available when you are not.</em></span>
+        <span data-lang="da">Din metode forbliver din. <em>Deputy gør den tilgængelig, når du ikke er det.</em></span>
+        <span data-lang="de">Ihre Methode bleibt Ihre. <em>Deputy macht sie verfügbar, wenn Sie es nicht sind.</em></span>
+      </p>
+      <p class="pq-sub reveal reveal-d3">
+        <span data-lang="en">Deputy turns your professional method into a structured digital protocol that extends your presence and continuity beyond the session.</span>
+        <span data-lang="da">Deputy forvandler din faglige metode til en struktureret digital protokol, der udvider din tilstedeværelse og kontinuitet ud over samtalen.</span>
+        <span data-lang="de">Deputy verwandelt Ihre fachliche Methode in ein strukturiertes digitales Protokoll, das Ihre Präsenz und Kontinuität über die Sitzung hinaus verlängert.</span>
+      </p>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>The closing line plus the stronger definition, as the bridge into the CTA.</p></aside>
+  </section>
+
+  <!-- ===== 11 · NEXT STEP ===== -->
+  <section class="slide" id="next-step" data-slide="13" data-label="Next step"
+           style="background: radial-gradient(64% 54% at 50% 40%, rgba(107,155,148,.11), transparent 62%), linear-gradient(180deg,var(--c-bg-2),var(--c-bg));">
+    <div class="cta-wrap">
+      <span class="kicker reveal reveal-d1">
+        <span data-lang="en">Next step</span>
+        <span data-lang="da">Næste skridt</span>
+        <span data-lang="de">Nächster Schritt</span>
+      </span>
+      <h2 class="cta-title reveal reveal-d2">
+        <span data-lang="en">Create your Deputy protocol.</span>
+        <span data-lang="da">Skab din Deputy-protokol.</span>
+        <span data-lang="de">Erstellen Sie Ihr Deputy-Protokoll.</span>
+      </h2>
+      <p class="cta-sub reveal reveal-d3">
+        <span data-lang="en">One conversation is enough to find out whether your method fits.</span>
+        <span data-lang="da">Én samtale er nok til at finde ud af, om din metode passer.</span>
+        <span data-lang="de">Ein Gespräch genügt, um herauszufinden, ob Ihre Methode passt.</span>
+      </p>
+      <p class="cta-sub reveal reveal-d3" style="margin-top:12px;">
+        <span data-lang="en">Bring one intervention or structured way of working that you already use. We will show you what it could look like as a Deputy protocol.</span>
+        <span data-lang="da">Tag én intervention eller en struktureret arbejdsmåde, du allerede bruger. Vi viser dig, hvordan den kunne se ud som Deputy-protokol.</span>
+        <span data-lang="de">Bringen Sie eine Intervention oder strukturierte Arbeitsweise mit, die Sie bereits nutzen. Wir zeigen Ihnen, wie sie als Deputy-Protokoll aussehen könnte.</span>
+      </p>
+
+      <div class="cta-actions reveal reveal-d4">
+        <a class="btn btn-primary" href="mailto:info@joergalbers.com?subject=Deputy%20protocol%20%E2%80%94%20one%20method%20I%20already%20use">
+          <span data-lang="en">Book a conversation</span>
+          <span data-lang="da">Book en samtale</span>
+          <span data-lang="de">Gespräch vereinbaren</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="btn btn-ghost" href="https://deputy.dk">
+          <span data-lang="en">Explore an existing protocol</span>
+          <span data-lang="da">Se en eksisterende protokol</span>
+          <span data-lang="de">Bestehendes Protokoll ansehen</span>
+        </a>
+      </div>
+
+      <div class="cta-contact reveal reveal-d5">
+        <a href="mailto:info@joergalbers.com">info@joergalbers.com</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="tel:+4520881840">+45 20 88 18 40</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>Alsion 2, 6400 Sønderborg</span>
+        <span class="cta-sig">
+          <span data-lang="en">Standard protocols are developed under the clinical direction of Jörg Albers — Cand. Psych., Specialist in Psychotherapy, Psychotherapy Supervisor, Licensed Psychologist.</span>
+          <span data-lang="da">Standardprotokoller udvikles under faglig ledelse af Jörg Albers — cand.psych., specialist i psykoterapi, supervisor i psykoterapi, autoriseret psykolog.</span>
+          <span data-lang="de">Die Standardprotokolle werden unter der fachlichen Leitung von Jörg Albers entwickelt — Cand. Psych., Spezialist für Psychotherapie, Supervisor für Psychotherapie, approbierter Psychologe.</span>
+        </span>
+      </div>
+    </div>
+    <aside class="notes" hidden><h4>Notes</h4><p>The stronger CTA from the earlier version: Create your Deputy protocol · Book a conversation · Explore an existing protocol.</p></aside>
+  </section>
+
+</main>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader-mark">Deputy</div>
+  <div class="loader-bar"><span></span></div>
+  <div class="loader-sub">Loading</div>
+</div>
+
+</body>
+</html>
