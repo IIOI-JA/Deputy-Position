@@ -486,7 +486,13 @@ body[data-audience] .notes{ display:none !important; }
 
 /* The grid is a fixed 24:7 shape, so its height is driven by its width.
    Cap the width against viewport height to keep the whole slide on one fold. */
-.week-figure{ margin:clamp(18px,3vh,34px) 0 0; width:100%; max-width:min(880px, 112vh); }
+.week-figure{ width:100%; }
+.week-row{ display:flex; flex-direction:column; align-items:center; gap:26px; margin-top:0; }
+.week-row .week-figure{ max-width:520px; margin:0; }
+.week-row .week-copy{ width:100%; max-width:720px; }
+.week-row .gap-context-card{ margin-top:0; padding:16px 22px; }
+.week-row .gap-context-card p{ margin:0; font-size:14.5px; line-height:1.5; }
+.week-row .gap-callout{ margin-top:10px !important; padding:16px 22px; font-size:14.5px; }
 .week-grid{ display:block; width:100%; height:auto; overflow:visible; }
 
 .wk-cell{
