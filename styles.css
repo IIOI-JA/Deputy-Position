@@ -480,13 +480,17 @@ body[data-audience] .notes{ display:none !important; }
 ============================================================ */
 .week-wrap{ width:100%; max-width:1360px; }
 .week-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:clamp(24px,5vw,80px); flex-wrap:wrap; }
-.week-head .display{ margin-bottom:0; flex:1 1 460px; }
+.week-head .display{ margin-bottom:0; flex:1 1 460px; font-size:clamp(32px, min(5.6vw, 6.6vh), 92px); }
 .week-head .body{ flex:1 1 380px; max-width:52ch; }
-.week-head .week-copy .body{ flex:none; }
+.week-head .week-copy .body{ flex:none; font-size:clamp(14px, min(1.05vw, 1.9vh), 17.5px); }
+.week-head .week-note{ font-size:clamp(13px, min(1.1vw, 1.7vh), 16.5px); }
+.week-head .week-copy .gap-context-card{ margin-top:0; padding:14px 18px; }
+.week-head .week-copy .gap-context-card p{ margin:0; }
+.week-head .week-copy .gap-callout{ margin-top:10px !important; padding:14px 18px; }
 
 /* The grid is a fixed 24:7 shape, so its height is driven by its width.
    Cap the width against viewport height to keep the whole slide on one fold. */
-.week-figure{ width:100%; }
+.week-figure{ width:100%; max-width:min(1200px, 118vh); margin:clamp(20px,3vh,36px) auto 0; }
 .week-row{ display:flex; flex-direction:column; align-items:center; gap:26px; margin-top:0; }
 .week-row .week-figure{ max-width:520px; margin:0; }
 .week-row .week-copy{ width:100%; max-width:720px; }
